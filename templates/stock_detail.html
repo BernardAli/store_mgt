@@ -15,7 +15,12 @@
                       </tr>
                       <tr>
                         <td>{{queryset.item_name}}</td>
-                        <td>{{queryset.quantity}}</td>
+                        <td>
+                          {% if queryset.quantity <= queryset.reorder_level %}
+                          <div style="background-color: orange;">{{queryset.quantity}}</div>
+                          {% else %}{{queryset.quantity}}
+                          {% endif %}
+                        </td>
                         <td>{{queryset.last_updated}}</td>
                         <td>{{queryset.reorder_level}}</td>
                       </tr>

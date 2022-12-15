@@ -4,6 +4,7 @@ from .forms import StockCreateForm
 
 
 admin.site.register(Category)
+# admin.site.register(StockHistories)
 
 
 class StockCreateAdmin(admin.ModelAdmin):

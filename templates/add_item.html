@@ -2,8 +2,14 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-	<form method='POST' action=''>{% csrf_token %}
-		{{form|crispy}}
-        <input type="submit" value='Save' class="btn btn-primary"/>
-    </form>
+<div class="row"><!--Start of row-->
+    <div class="col-sm-6"><!--Start of col-->
+        <div class="display_table">
+        <form method='POST' action=''>{% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" value='Save' class="btn btn-primary"/>
+        </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
