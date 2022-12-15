@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<div class="header">{{header}}</div>
+
+	<form method='POST' action=''>{% csrf_token %}
+    	{{form|crispy}}
+		<input type="submit" value='Search' class="btn btn-primary"/>
+	</form>
+	<br>
+
+	<div class="display_table">
+			<table class='table'>
+				<thead>
+				  <tr>
+					<th>COUNT</th>
+					<th>CATEGORY</th>
+					<th>ITEM NAME</th>
+					<th>QUANTITY IN STORE</th>
+					<th>DELETE</th>
+					<th>UPDATED AT</th>
+				  </tr>
+				</thead>
+			  {% for instance in queryset %}
+				  <tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{instance.category}}</td>
+					<td><a href="{% url 'update_items' instance.id %}">{{instance.item_name}}</a></td>
+					<td><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></td>
+					  <td><a href="{% url 'delete_items' instance.id %}"><i style="color:red" class="fas fa-trash-alt"></i></a></td>
+				  	<td>{{instance.last_updated|date:"d M, h:i a"}}</td>
+				  </tr>
+			  {% endfor %}
+			</table>
+	</div>
+{% endblock %}
